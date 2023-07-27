@@ -1,0 +1,9 @@
+<!-- // variable.scss  // 浅色$colors-light: (  fill-1: #fff,  text: #3c3c3c,  text-1: #757575,  text-2: #222,);// 深色$colors-dark: (  fill-1: #222,  text: #fff,  text-1: rgba(255, 255, 255, 0.3),  text-2: #ffcd32,);
+
+
+
+<template>  <div class="header">    <div class="text">小恐龙换肤</div>    <div role="switch" class="switch" :class="theme === true ? 'is-checked' : ''">      <input type="checkbox" class="switch-input" />      <span class="switch-core" @click="changeTheme"></span>    </div>  </div></template>
+
+
+<script>
+        import { initTheme } from "../../theme";import bus from "../../bus";export default {  name: "m-header",  data() {    return {      theme: true, // false深色主题      avatar: ""    };  },  methods: {    changeTheme() {      this.theme = !this.theme;      initTheme(this.theme);      this.setThemeValue(this.theme);      bus.$emit("changeTheme", this.theme);    },    setThemeValue(theme) {      theme = theme ? "light" : "dark";      this.avatar = require(`@/assets/images/logo-${theme}.jpeg`);    }  },  created() {    this.setThemeValue(this.theme);  }};</script> -->
